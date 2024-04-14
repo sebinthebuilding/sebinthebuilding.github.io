@@ -4,30 +4,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sebestyén"/>
-    <meta name="description" content="My portfolio of videos"/>
+    <meta name="description" content="My portfolio of videos">
     <title>Sebestyén Sandor's Video Portfolio</title>
-    <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            text-align: center;
+        }
+
+        #about_me_text {
+            margin: 0 360px; 
+        }
+
+        #main_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #portfolio_content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+            margin-top: 20px;
+        }
+
+        #portfolio_content h3 {
+            background-color: #8aa60d88;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex; /* Use flexbox to center text vertically and horizontally */
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+        }
+
+        .project_page {
+            display: none;
+        }
+
+        #back_to_main_page_button {
+            cursor: pointer;
+            background-color: #8aa60d88;
+            border-radius: 5px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute; /* Position absolutely */
+            top: 5%; /* Adjust the distance from the top */
+            left: 5%; /* Adjust the distance from the left */
+            font-size: 18px; /* Set the font size */
+            padding: 10px;
+        }
+
+        #project_pages h4 {
+            position: absolute;
+            top: 15%;
+            left: 45%;
+            font-size: 24px; /* Set the font size */
+            text-decoration: underline;
+            text-decoration-color: #8aa60d88; /* Color of the underline */
+            text-decoration-thickness: 3px; /* Thickness of the underline */
+        }
+
+        .project_description,
+        .roles,
+        .project_link {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .project_description {
+            top: 30%;
+            left: 20%;
+        }
+
+        .roles {
+            top: 50%;
+            left: 20%;
+        }
+
+        .project_link {
+            top: 70%;
+            left: 20%;
+        }
+    </style>
 </head>
-<style>
-
-</style>
 <body>
-    <h1>Welcome to my Portfolio of Videos!</h1>
-    <h2>About Me</h2>
-    <p>I'd like to keep this section as brief as possible so that more time may be spent enjoying the content below. My name is Sebestyén Sandor and I have two passions in this life. The first is making movies and the second is playing music. I'm absolutely obsessed with both and could do either forever and never get bored.</p>
-    <h2>Portfolio</h2>
-    <h3>Everything's Shit</h3>
-    <h3>Shane's Final Assignment</h3>
-    <h3>Pitt Student Survey</h3>
-    <h3>Peter Bark</h3>
-    <h3>What Happened to the Missing Notebook? A Story About Friends</h3>
-    <h3>Warhol One Pager</h3>
-    <h3>Warhol Sizzle</h3>
-    <h3>Warhol Personal Development Project</h3>
+    <div id="main_page">
+        <h1 id="welcome_text">Welcome to my Portfolio of Videos!</h1>
+        <h2 id="about_me">About Me</h2>
+        <p id="about_me_text">
+            I'd like to keep this section as brief as possible so that more time may be spent enjoying the content below. My name is Sebestyén Sandor and I have two passions in this life. The first is making movies and the second is playing music. I'm absolutely obsessed with both and could do either forever and never get bored.
+        </p>
+        <h2 id="portfolio">My Portfolio</h2>
+        <div id="portfolio_content">
+            <h3 id="everythings_shit_button">Everything's Shit</h3>
+            <h3 id="shanes_final_assignment_button">Shane's Final Assignment</h3>
+            <h3 id="pitt_student_survey_button">Pitt Student Survey</h3>
+            <h3 id="peter_bark_button">Peter Bark</h3>
+            <h3 id="notebook_button">What Happened to the Missing Notebook? A Story About Friends</h3>
+            <h3 id="one_pager_button">Warhol One Pager</h3>
+            <h3 id="sizzle_button">Warhol Sizzle</h3>
+            <h3 id="personal_dev_button">Warhol Personal Development Project</h3>
+        </div>
+    </div>
+    <div id="project_pages">
+        <h2 id="back_to_main_page_button">Back to Main Page</h2>
 
-    <!-- Add any scripts at the end of the body tag for better performance -->
+        <div id="everythings_shit_page" class="project_page">
+            <h4>Everything's Shit</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="shanes_final_assignment_page" class="project_page">
+            <h4>Shane's Final Assignment</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="pitt_student_survey_page" class="project_page">
+            <h4>Pitt Student Survey</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="peter_bark_page" class="project_page">
+            <h4>Peter Bark</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="notebook_page" class="project_page">
+            <h4>What Happened to the Missing Notebook? A Story About Friends</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="one_pager_page" class="project_page">
+            <h4>Warhol One Pager</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="sizzle_page" class="project_page">
+            <h4>Warhol Sizzle</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+
+        <div id="personal_dev_page" class="project_page">
+            <h4>Warhol Personal Development Project</h4>
+            <p class="project_description">Description: </p>
+            <p class="roles">Roles: </p>
+            <p class="project_link">Link: </p><a href="" ></a>
+        </div>
+    </div>
 </body>
 <script>
+    const main_page = document.getElementById("main_page");
+    const project_pages = document.getElementById("project_pages");
+    const back_to_main_page_button = document.getElementById("back_to_main_page_button");
+
+    const everythings_shit_button = document.getElementById("everythings_shit_button");
+    const shanes_final_assignment_button = document.getElementById("shanes_final_assignment_button");
+    const pitt_student_survey_button = document.getElementById("pitt_student_survey_button");
+    const peter_bark_button = document.getElementById("peter_bark_button");
+    const notebook_button = document.getElementById("notebook_button");
+    const one_pager_button = document.getElementById("one_pager_button");
+    const sizzle_button = document.getElementById("sizzle_button");
+    const personal_dev_button = document.getElementById("personal_dev_button");
+
+    const everythings_shit_page = document.getElementById("everythings_shit_page");
+    const shanes_final_assignment_page = document.getElementById("shanes_final_assignment_page");
+    const pitt_student_survey_page = document.getElementById("pitt_student_survey_page");
+    const peter_bark_page = document.getElementById("peter_bark_page");
+    const notebook_page = document.getElementById("notebook_page");
+    const one_pager_page = document.getElementById("one_pager_page");
+    const sizzle_page = document.getElementById("sizzle_page");
+    const personal_dev_page = document.getElementById("personal_dev_page");
+
+    back_to_main_page_button.addEventListener(`click`, () => {
+        project_pages.style.display=`none`;
+        main_page.style.display=`flex`;
+    });
+
+    everythings_shit_button.addEventListener(`click`, () => {
+        showPage(everythings_shit_page);
+    });
+
+    shanes_final_assignment_button.addEventListener(`click`, () => {
+        showPage(shanes_final_assignment_page);
+    });
+
+    pitt_student_survey_button.addEventListener(`click`, () => {
+        showPage(pitt_student_survey_page);
+    });
+
+    peter_bark_button.addEventListener(`click`, () => {
+        showPage(peter_bark_page);
+    });
+
+    notebook_button.addEventListener(`click`, () => {
+        showPage(notebook_page);
+    });
+
+    one_pager_button.addEventListener(`click`, () => {
+        showPage(one_pager_page);
+    });
+
+    sizzle_button.addEventListener(`click`, () => {
+        showPage(sizzle_page);
+    });
+
+    personal_dev_button.addEventListener(`click`, () => {
+        showPage(personal_dev_page);
+    });
+
+    function showPage(page) {
+        project_pages.style.display=`block`;
+        main_page.style.display=`none`;
+        everythings_shit_page.style.display=`none`;
+        shanes_final_assignment_page.style.display=`none`;
+        pitt_student_survey_page.style.display=`none`;
+        peter_bark_page.style.display=`none`;
+        notebook_page.style.display=`none`;
+        one_pager_page.style.display=`none`;
+        sizzle_page.style.display=`none`;
+        personal_dev_page.style.display=`none`;
+        page.style.display=`block`;
+        back_to_main_page_button.style.display=`flex`;
+    }
 
 </script>
 </html>
