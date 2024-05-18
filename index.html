@@ -38,7 +38,7 @@
 
         #portfolio_content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             grid-gap: 20px;
         }
 
@@ -119,10 +119,7 @@
             <h3 id="shanes_final_assignment_button">Shane's Final Assignment</h3>
             <h3 id="pitt_student_survey_button">Pitt Student Survey</h3>
             <h3 id="peter_bark_button">Peter Bark</h3>
-            <h3 id="notebook_button">What Happened to the Missing Notebook? A Story About Friends</h3>
-            <h3 id="one_pager_button">Warhol One Pager</h3>
-            <h3 id="sizzle_button">Warhol Sizzle</h3>
-            <h3 id="personal_dev_button">Warhol Personal Development Project</h3>
+            <h3 id="one_pager_button">One Pager</h3>
         </div>
     </div>
     <div id="project_pages">
@@ -156,32 +153,11 @@
             <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=7rS5xnEnw1w" target="_blank">https://www.youtube.com/watch?v=7rS5xnEnw1w</a></p>
         </div>
 
-        <div id="notebook_page" class="project_page">
-            <h4>What Happened to the Missing Notebook? A Story About Friends</h4>
-            <p class="project_description"><b>Description:</b> This was just a group excersize with the goal of including different types of angles in the video. May as well show you, dear viewer, something from the very early days.</p>
-            <p class="roles"><b>Roles:</b> Supporting Actor, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=nzR6qFwJs08" target="_blank">https://www.youtube.com/watch?v=nzR6qFwJs08</a></p>
-        </div>
-
         <div id="one_pager_page" class="project_page">
             <h4>Warhol One Pager</h4>
-            <p class="project_description"><b>Description:</b> Every member of the first-ever Warhol x LOOK Creaive Guild internship received the same one page script and we all pulled a random genre out of a hat. This was my attempt at the comedic genre. I had a great time making this with the help of my younger brother. I was at home in Budapest when I was filming this so I had limited access to equipment. During the production for this project, I learned there's a way to solve every potential problem that may arise. There's always a way to get the shot, it may take some time and thinking, but there's always a way.</p>
+            <p class="project_description"><b>Description:</b> I was part of an film internship where every member received the same one page script and we all pulled a random genre out of a hat. This was my attempt at the comedic genre. I had a great time making this with the help of my younger brother. I was at home in Budapest when I was filming this so I had limited access to equipment. During the production for this project, I learned there's a way to solve every potential problem that may arise. There's always a way to get the shot, it may take some time and thinking, but there's always a way.</p>
             <p class="roles"><b>Roles:</b> Director, Actor, Editor</p>
             <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=FbiTrZYKlJs" target="_blank">https://www.youtube.com/watch?v=FbiTrZYKlJs</a></p>
-        </div>
-
-        <div id="sizzle_page" class="project_page">
-            <h4>Warhol Sizzle</h4>
-            <p class="project_description"><b>Description:</b> This sizzle project for the Warhol x LOOK Creaive Guild internship is just supposed to be a quick exciting video promoting the intership and quickly showing the experiences we had. I like it for what it is, but I would be more proud of it if I wouldn't have had to split my time between school and the editing. I dream of one day spending my professional time editing and making videos, and just have that one focus.</p>
-            <p class="roles"><b>Roles:</b> Intern, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=Nm2720xD4gc" target="_blank">https://www.youtube.com/watch?v=Nm2720xD4gc</a></p>
-        </div>
-
-        <div id="personal_dev_page" class="project_page">
-            <h4>Warhol Personal Development Project</h4>
-            <p class="project_description"><b>Description:</b> This project was my summary of the first ever Warhol x LOOK Creaive Guild internship. This is another situation where I wish I would've had more time to edit and make it really the way I want. Other projects were coming due towards the end of the semester, and I had to split my focus. During this project I learned a lot about how to tie different snippets of a lot of footage into a cohesive piece. You have to pay attention to every word and have what you're showing be logical when compared to what you're hearing. I really enjoyed the internship and feel it was filled with valuable experiences I'll take with me to future film production opportunities.</p>
-            <p class="roles"><b>Roles:</b> Director, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=7mB45-hWmnk" target="_blank">https://www.youtube.com/watch?v=7mB45-hWmnk</a></p>
         </div>
     </div>
 </body>
@@ -194,19 +170,13 @@
     const shanes_final_assignment_button = document.getElementById("shanes_final_assignment_button");
     const pitt_student_survey_button = document.getElementById("pitt_student_survey_button");
     const peter_bark_button = document.getElementById("peter_bark_button");
-    const notebook_button = document.getElementById("notebook_button");
     const one_pager_button = document.getElementById("one_pager_button");
-    const sizzle_button = document.getElementById("sizzle_button");
-    const personal_dev_button = document.getElementById("personal_dev_button");
 
     const everythings_shit_page = document.getElementById("everythings_shit_page");
     const shanes_final_assignment_page = document.getElementById("shanes_final_assignment_page");
     const pitt_student_survey_page = document.getElementById("pitt_student_survey_page");
     const peter_bark_page = document.getElementById("peter_bark_page");
-    const notebook_page = document.getElementById("notebook_page");
     const one_pager_page = document.getElementById("one_pager_page");
-    const sizzle_page = document.getElementById("sizzle_page");
-    const personal_dev_page = document.getElementById("personal_dev_page");
 
     back_to_main_page_button.addEventListener(`click`, () => {
         project_pages.style.display=`none`;
@@ -229,20 +199,8 @@
         showPage(peter_bark_page);
     });
 
-    notebook_button.addEventListener(`click`, () => {
-        showPage(notebook_page);
-    });
-
     one_pager_button.addEventListener(`click`, () => {
         showPage(one_pager_page);
-    });
-
-    sizzle_button.addEventListener(`click`, () => {
-        showPage(sizzle_page);
-    });
-
-    personal_dev_button.addEventListener(`click`, () => {
-        showPage(personal_dev_page);
     });
 
     function showPage(page) {
@@ -252,10 +210,7 @@
         shanes_final_assignment_page.style.display=`none`;
         pitt_student_survey_page.style.display=`none`;
         peter_bark_page.style.display=`none`;
-        notebook_page.style.display=`none`;
         one_pager_page.style.display=`none`;
-        sizzle_page.style.display=`none`;
-        personal_dev_page.style.display=`none`;
         page.style.display=`block`;
         back_to_main_page_button.style.display=`flex`;
     }
