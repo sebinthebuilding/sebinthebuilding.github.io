@@ -4,56 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sebestyén"/>
-    <meta name="description" content="My portfolio of videos">
-    <title>Sebestyén Sandor's Video Portfolio</title>
+    <meta name="description" content="My portfolio of films.">
+    <title>Sebestyén Sandor's Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             color: #fff;
             background-color: #333;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-
-        h1, h2, h3, h4 {
-            text-align: center;
-        }
-
-        #about_me_text {
-            margin: 0 360px; 
-            font-size: 20px;
+            justify-content: flex-start;
+            height: 100%;
+            overflow-y: auto;
+            top: 0;
+            left: 0;
         }
 
         #main_page {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        #welcome_text {
+            font-weight: bold;
+            font-size: 34px;
+            padding: 50px;
+        }
+
+        #about_me_title {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        #about_me_text {
+            padding: 0px 20px;
+            font-size: 20px;
+            line-height: 1.2;
+            border-radius: 10px;
+            max-width: 1000px;
+            color: #e0e0e0;
+        }
+
+        
+        #contact_me_text {
+            font-size: 18px;
+            padding: 0px 20px;
+
+        }
+
+        a {
+            color: #7575f28a;
+            text-decoration: none;
+            word-wrap: break-word;
+        }
+
+        a:hover {
+            color: #7575f23f;
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4 {
+            text-align: center;
+            margin: 0;
+            font-weight: normal;
+        }
+
+
+
+        .copy_icon {
+            cursor: pointer;
+            margin-left: 8px;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+
+
+
+
+        #my_portfolio_title {
+            font-weight: bold;
+            font-size: 22px;
+            padding: 10px;
         }
 
         #portfolio_content {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 22px;
+            box-sizing: border-box;
+            padding: 30px;
+            width: 80%;
         }
 
         #portfolio_content h3 {
             background-color: #8aa60d88;
-            padding: 10px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            display: flex; /* Use flexbox to center text vertically and horizontally */
-            align-items: center; /* Center text vertically */
-            justify-content: center; /* Center text horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            text-align: center;
+            white-space: normal;
+            word-wrap: break-word;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 11px;
+        }
+
+        #portfolio_content h3:hover {
+            background-color: #53630a88;
+            transform: translateY(-1px);
         }
 
         .project_page {
             display: none;
+            background-color: #444;
+            padding: 40px 50px;
+            margin: 60px auto;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            color: #e0e0e0;
+            font-size: 18px;
+            line-height: 1.6;
         }
 
         #back_to_main_page_button {
@@ -61,159 +144,466 @@
             background-color: #8aa60d88;
             border-radius: 5px;
             display: none;
-            align-items: center;
-            justify-content: center;
-            position: absolute; /* Position absolutely */
-            top: 5%; /* Adjust the distance from the top */
-            left: 5%; /* Adjust the distance from the left */
-            font-size: 18px; /* Set the font size */
-            padding: 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        #back_to_main_page_button:hover {
+            background-color: #53630a88;
         }
 
         #project_pages h4 {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
             font-size: 24px;
             text-decoration: underline;
             text-decoration-color: #8aa60d88;
             text-decoration-thickness: 3px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .description_text,
+        .roles_text,
+        .link_text {
+            font-style: italic;
+            font-size: 20px;
+            display: block;
+            color: #f0f0f0;
+            margin-top: 10px;
         }
 
         .project_description,
         .roles,
         .project_link {
             position: relative;
-            font-size: 20px;
-            margin-bottom: 10px;
-            display: block;
-            padding-left: 200px; /* Add padding to the left */
-            padding-right: 200px; /* Add padding to the right */
+            font-size: 18px;
+            color: #e0e0e0;
+            text-align: justify;
+            line-height: 1.6;
+            text-indent: 30px;
         }
 
-        .project_description {
-            top: 0;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .roles {
-            top: 50px;
+        @media (max-width: 768px) {
+            body {
+                overflow-y: scroll;
+            }
+
+            .project_page {
+                padding: 20px 30px;
+                font-size: 16px;
+            }
+
+            .project_description,
+            .roles,
+            .project_link {
+                font-size: 16px;
+            }
+
+            #back_to_main_page_button {
+                font-size: 14px;
+                padding: 6px;
+            }
+
+            #project_pages h4 {
+                font-size: 20px;
+            }
+
+            #portfolio_content {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px;
+            }
+
+            #portfolio_content h3 {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
         }
 
-        .project_link {
-            top: 100px;
+        @media (max-width: 480px) {
+            body {
+                overflow-y: scroll;
+            }
+
+            .project_page {
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+
+            .project_description,
+            .roles,
+            .project_link {
+                font-size: 14px;
+            }
+
+            #back_to_main_page_button {
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            #project_pages h4 {
+                font-size: 18px;
+            }
+
+            #portfolio_content {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            #portfolio_content h3 {
+                font-size: 1rem;
+                padding: 8px;
+            }
         }
+
     </style>
-</head>
+    </head>
 <body>
     <div id="main_page">
-        <h1 id="welcome_text">Welcome to my Portfolio of Videos!</h1>
-        <h2 id="about_me">About Me</h2>
+        <h1 id="welcome_text">Welcome to my Portfolio of Films!</h1>
+        <h2 id="about_me_title">About Me</h2>
         <p id="about_me_text">
-            I'd like to keep this section as brief as possible so that more time may be spent enjoying the content below. My name is Sebestyén Sandor and I have two passions in this life. The first is making movies and the second is playing music. I'm absolutely obsessed with both and could do either forever and never get bored.
-        </p>
-        <p style="font-size: 16px;"><b>Please feel free to contact me: </b>sandor.sebestyen1998@gmail.com</p>
-        <h2 id="portfolio">My Portfolio</h2>
+            I'd like to keep this section as brief as possible so that you may spend more time enjoying the content below. My name is Sebestyén Sandor, and I have two passions in life: making movies and playing music. I'd absolutely obsessed with both and could do either forever without getting bored.</p>
+            <p id="contact_me_text">
+                <b>Please feel free to contact me, I'd be glad to send you my CV: </b>
+                <a href="mailto:sandor.sebestyen1998@gmail.com">sandor.sebestyen1998@gmail.com</a>
+                <span class="copy_icon" onclick="copyEmailToClipboard()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg></span>
+            </p>
+
+        <h2 id="my_portfolio_title">My Portfolio</h2>
         <div id="portfolio_content">
-            <h3 id="everythings_shit_button">Everything's Shit</h3>
-            <h3 id="shanes_final_assignment_button">Shane's Final Assignment</h3>
-            <h3 id="pitt_student_survey_button">Pitt Student Survey</h3>
-            <h3 id="peter_bark_button">Peter Bark</h3>
-            <h3 id="one_pager_button">One Pager</h3>
-        </div>
+            <h3 id="ace_button">ACE (2021)</h3>
+            <h3 id="baba_working_title_button">baba (baby) (2025) [working title]</h3>
+            <h3 id="bathroom_action_button">Bathroom Action (2024)</h3>
+            <h3 id="burgled_button">Burgled (2024)</h3>
+            <h3 id="everythings_shit_button">Everything's Shit (2022)</h3>
+            <h3 id="first_talking_monkey_button">First Talking Monkey (2019)</h3>
+            <h3 id="idegfilm_button">Idegfilm (Frustration Film) (2025)</h3>
+            <h3 id="messy_button">Messy! (2025)</h3>
+            <h3 id="missing_notebook_button">Missing Notebook (2019)</h3>
+            <h3 id="missing_person_button">Missing Person (2024)</h3>
+            <h3 id="panka_megint_maszatol_button">Panka Megint Maszatol<br>(Panka's at It Again) (2025)</h3>
+            <h3 id="peter_bark_button">Peter Bark (2019)</h3>
+            <h3 id="pitt_student_survey_button">Pitt Student Survey (2019)</h3>
+            <h3 id="scared_beyond_development_button">Scared Beyond Development (2019)</h3>
+            <h3 id="shanes_final_assignment_button">Shane's Final Assignment (2019)</h3>
+            <h3 id="warhol_one_pager_button">Warhol One Pager (2022)</h3>
+        </div>        
     </div>
     <div id="project_pages">
         <h2 id="back_to_main_page_button">Back to Main Page</h2>
 
+        <div id="ace_page" class="project_page">
+            <h4>ACE (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was an editing application I completed for an ACE internship opportunity. Unfortunately, I was not awarded the internship, but I am glad with the edit.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=sYNPpiyX_yg" target="_blank">https://www.youtube.com/watch?v=sYNPpiyX_yg</a></p>
+        </div>
+
+        <div id="baba_working_title_page" class="project_page">
+            <h4>baba (baby) (2025) [working title] - Picture Lock</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was an idea my writer colleague at The Lumiere Film School had. She asked if I could help her direct it. For me, this was very valuable practice in multiple aspects of directing. First, I had to create the shotlist on the spot, as I had not seen the location beforehand. And second, this was an incredible lesson in directing an actor. She gave an unbelievable performance.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=XeRC7YDWWnA" target="_blank">https://www.youtube.com/watch?v=XeRC7YDWWnA</a></p>
+        </div>
+
+        <div id="bathroom_action_page" class="project_page">
+            <h4>Bathroom Action (2024)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was just some fun my cinematographer/editor friend and I were having while on break during the shooting of "Missing Person (2024)", nothing to be taken seriously.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Co-Director, Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=gJK0Fl9wSLs" target="_blank">https://www.youtube.com/watch?v=gJK0Fl9wSLs</a></p>
+        </div>
+
+        <div id="burgled_page" class="project_page">
+            <h4>Burgled (2024)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was the first assignment of the director's course for The Lumiere Film School. We had 4 hours and a soundstage to shoot 6 shots and create a consistent mood without the use of sound. I learned a lot from this assignment. I started creating the crew around me who I like to work with. I also learned a lot about my camera's stops of dynamic range. The only reason the picture is watchable is that I was able to bump the ISO in post; otherwise, everything would have been too dark. I learned that no matter that it's the cinematographer's job to worry about the lights, as the director, I have to be on top of it. I also wish I had shot more raw material.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Writer, Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=AqGZ_g3XlOQ" target="_blank">https://www.youtube.com/watch?v=AqGZ_g3XlOQ</a></p>
+        </div>
+    
         <div id="everythings_shit_page" class="project_page">
-            <h4>Everything's Shit</h4>
-            <p class="project_description"><b>Description:</b> This was my senior year capstone project at the University of Pittsburgh. I originally had another idea which was a mockumentary based around an amateur frisbee golf athlete, but the actor who I based the character on couldn't commit the time to the project so I had to quickly think of something that only involved my time - something quite challenging in a medium that usually requires teamwork. I had to come up with creative ways to make something that looks good and was engaging with the limitations that come with making a short film alone. For example, there was no way I could move the camera and be infront of it at the same time. I enjoyed making this project and am proud of it. The most important thing I learned from producing this is to get more angles than you think you need because I find the Chapter 2 of this short quite repetitive.</p>
-            <p class="roles"><b>Roles:</b> Creator, Director, Actor, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=eJGqoby5Ni0&t=3s" target="_blank">https://www.youtube.com/watch?v=eJGqoby5Ni0&t=3s</a></p>
+            <h4>Everything's Shit (2022)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was my senior year capstone project at The University of Pittsburgh. I originally had another idea which was a mockumentary based around an amateur frisbee golf athlete, but the actor who I based the character on couldn't commit the time to the project so I had to quickly think of something that involved only my time - something quite challenging in a medium that usually requires teamwork. I had to come up with creative ways to make something that looks good and was engaging with the limitations that come with making a short film alone. I learned a lot from this film, mostly that I have a lot more fun doing it if I work with people I genuinely enjoy working with.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Writer, Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=jAvHq7Vs6sA" target="_blank">https://www.youtube.com/watch?v=jAvHq7Vs6sA</a></p>
         </div>
 
-        <div id="shanes_final_assignment_page" class="project_page">
-            <h4>Shane's Final Assignment</h4>
-            <p class="project_description"><b>Description:</b> This is the project where I learned to produce videos with the mind of an editor. If I want a certain sequence of frames, those are the shots I need to capture with the camera. I picture the final scene in my head and work backwards from there. Editing became my favorite part of the film making process. I remember editing the final sequence of this short and having to stop because I was overwhelmed with joy at the realization that I have the capacity to express myself through film. I got exactly what was in my head, and had been in my head for months, out. It felt incredibly freeing (I actually got over my ex in that moment).</p>
-            <p class="roles"><b>Roles:</b> Creator, Director, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=XlNMt0IPeL4" target="_blank">https://www.youtube.com/watch?v=XlNMt0IPeL4</a></p>
+        <div id="first_talking_monkey_page" class="project_page">
+            <h4>First Talking Monkey (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was the first ever assignment I did for UPitt so I ask that you please view it as such.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Director, Supporting Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=mCqayujAfL0" target="_blank">https://www.youtube.com/watch?v=mCqayujAfL0</a></p>
+        </div>
+    
+        <div id="idegfilm_page" class="project_page">
+            <h4>Idegfilm (Frustration Film) (2025)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This is an experimental film I made out of frustration.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Writer, Director, Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://drive.google.com/file/d/14Eit3ld7z5H4Vb7lNMhsKZ0BzftSMHD2/view?usp=sharing" target="_blank">https://drive.google.com/file/d/14Eit3ld7z5H4Vb7lNMhsKZ0BzftSMHD2/view?usp=sharing</a></p>
         </div>
 
-        <div id="pitt_student_survey_page" class="project_page">
-            <h4>Pitt Student Survey</h4>
-            <p class="project_description"><b>Description:</b> This was just a fun group project we did in class. I took a mockumentary class my second semester at Pitt after I had barely passed my neuro class first semester. I quickly realized I'd be miserable if I did 4 years of intense science so I tried something else. I've always enjoyed watching the mockumentaries the most as I feel my thoughts are a little too meta for my own good and the mockumentary is the pinnacle format for meta humor. The funniest jokes are the slight nods to and looks a character gives the audience. Spending time in the mockumentary class exposed me to film ideas I became really interested in. Just to give a couple of brief examples, the director can show us anything they wish and present it as the truth, it's ultimately up to us whether we believe what we're being spoonfed. What is a director deliberately omitting? What's right next to the frame that they're not showing us? What strings is the director pulling to give us a good show?</p>
-            <p class="roles"><b>Roles:</b> Actor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=QrIbCimNc74" target="_blank" >https://www.youtube.com/watch?v=QrIbCimNc74</a></p>
+        <div id="messy_page" class="project_page">
+            <h4>Messy!</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This is a one-minute film I made as an assignment for the directing course at Lumiere. I was really frustrated when I made this film and wanted the story to deliberately fall on its face. All the information is there to understand that it's a situation that could've been messy if it happened, but didn't want serve the story on a platter for the viewer. Retrospectively, I should've made some super basic story that everyone can understand easily on their first viewing, but, I use film to express myself, and this is what I felt like making at the time.</p>
+            <b class="roles_text">Roles</b> 
+            <p class="roles">Writer, Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=_aZX4Jc1_Dk" target="_blank">https://www.youtube.com/watch?v=_aZX4Jc1_Dk</a></p>
+        </div>
+
+        <div id="missing_notebook_page" class="project_page">
+            <h4>Missing Notebok</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was a little group assignment at UPitt. We came up with the shots together and edited the raw material independently</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Co-Director, Supporting Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://drive.google.com/file/d/1-cv0ukWfcVfs5leTyckdajsA0HLkhm6L/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1-cv0ukWfcVfs5leTyckdajsA0HLkhm6L/view?usp=sharing</a></p>
+        </div>
+
+        <div id="missing_person_page" class="project_page">
+            <h4>Missing Person</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was a scene my writer/director friend did as an assignment for school. The edit is my cinematographer friend's, I have yet to make my own.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Supporting Actor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=umzQFP7E0X0" target="_blank">https://www.youtube.com/watch?v=umzQFP7E0X0</a></p>
+        </div>
+        
+        <div id="panka_megint_maszatol_page" class="project_page">
+            <h4>Panka Megint Maszatol (Panka's at It Again) (2025)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This is a pro-bono commercial I developed for my friend. I helped conceptualize it and I directed production. My cinematographer/editor friend edited this version and I love it. Narration and title cards are still on the to do list.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Co-Writer, Director</p>
+            <b class="link_text">Link:</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=gSZqLmyROFE" target="_blank">https://www.youtube.com/watch?v=gSZqLmyROFE</a></p>
+    
+            <b class="description_text">Description</b>
+            <p class="project_description">This is my take on it. It is still in picture lock and the effects aren't final. My goal here was to cut an action sequence in an empty office, aka a place with no action.</p>
+            <b class="roles_text">Roles:</b>
+            <p class="roles">Co-Writer, Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=qAQOj9EBL2A" target="_blank">https://www.youtube.com/watch?v=qAQOj9EBL2A</a></p>
         </div>
 
         <div id="peter_bark_page" class="project_page">
-            <h4>Peter Bark</h4>
-            <p class="project_description"><b>Description:</b> This was a group project we did in class. If I remember correctly, each member of the group had a different role in production, but each group member had to edit their own rendition using the same footage. I am a strong believer that music decides that atmosphere of the scene, something that holds true for the end of this short. There isn't a sequence I've thought of where the soundtrack isn't playing in my head in the background. I still really like this song and I have another sequence I want to see on a screen and instead of in my head that has this song playing through it, it'll be part of a bigger passion project I'm working on.</p>
-            <p class="roles"><b>Roles:</b> Actor, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=7rS5xnEnw1w" target="_blank">https://www.youtube.com/watch?v=7rS5xnEnw1w</a></p>
+            <h4>Peter Bark (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was a group assignment in one of my film classes at UPitt. It was fun to do and I learned a lot about editing.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=_hYSBfMt92Y" target="_blank">https://www.youtube.com/watch?v=_hYSBfMt92Y</a></p>
         </div>
 
-        <div id="one_pager_page" class="project_page">
-            <h4>Warhol One Pager</h4>
-            <p class="project_description"><b>Description:</b> I was part of an film internship where every member received the same one page script and we all pulled a random genre out of a hat. This was my attempt at the comedic genre. I had a great time making this with the help of my younger brother. I was at home in Budapest when I was filming this so I had limited access to equipment. During the production for this project, I learned there's a way to solve every potential problem that may arise. There's always a way to get the shot, it may take some time and thinking, but there's always a way.</p>
-            <p class="roles"><b>Roles:</b> Director, Actor, Editor</p>
-            <p class="project_link"><b>Link:</b> <a href="https://www.youtube.com/watch?v=FbiTrZYKlJs" target="_blank">https://www.youtube.com/watch?v=FbiTrZYKlJs</a></p>
+        <div id="pitt_student_survey_page" class="project_page">
+            <h4>Pitt Student Survey (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was one of the first assignments in my mockumentary class at UPitt and my first acting performance. Shooting this was a lot of fun, none of us could keep a straight face on set.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Actor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=SOeB3Jq5vfU" target="_blank">https://www.youtube.com/watch?v=SOeB3Jq5vfU</a></p>
         </div>
+
+        <div id="scared_beyond_development_page" class="project_page">
+            <h4>Scared Beyond Development (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was just a fun editing assignment in one of my film classes at UPitt.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Editor, Voice-Over</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://drive.google.com/file/d/1z11NYBrMMOU4kHOJSkhQjmGJFgzEX-os/view?usp=drive_link" target="_blank">https://drive.google.com/file/d/1z11NYBrMMOU4kHOJSkhQjmGJFgzEX-os/view?usp=drive_link</a></p>
+        </div>
+    
+        <div id="shanes_final_assignment_page" class="project_page">
+            <h4>Shane's Final Assignment (2019)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was one of the first films I made at UPitt. This is the film I was editing when I realized that I can self express through film. I still remember the moment when I saw the image on the screen that had been in my head months prior and thought to myself, "this is my purpose on this planet". It was an overwhelmingly good moment.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Writer, Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://drive.google.com/file/d/1yqITH30deEkGUSy2cboBNp5cU2R0DrvF/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1yqITH30deEkGUSy2cboBNp5cU2R0DrvF/view?usp=sharing</a></p>
+        </div>
+
+        <div id="warhol_one_pager_page" class="project_page">
+            <h4>Warhol One Pager (2022)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was a one page script for my Warhol internship that I had to make into a comedy. This was just a bit of fun my brother and I had.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Director, Actor, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://drive.google.com/file/d/1a_n9d3AvvLCMpnxgYEfjgabWUyXdas9t/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1a_n9d3AvvLCMpnxgYEfjgabWUyXdas9t/view?usp=sharing</a></p>
+        </div>
+
     </div>
+
 </body>
+
 <script>
+    function copyEmailToClipboard() {
+        const email = "sandor.sebestyen1998@gmail.com";
+        navigator.clipboard.writeText(email).then(() => {
+            alert("Email copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
     const main_page = document.getElementById("main_page");
     const project_pages = document.getElementById("project_pages");
     const back_to_main_page_button = document.getElementById("back_to_main_page_button");
 
-    const everythings_shit_button = document.getElementById("everythings_shit_button");
-    const shanes_final_assignment_button = document.getElementById("shanes_final_assignment_button");
-    const pitt_student_survey_button = document.getElementById("pitt_student_survey_button");
-    const peter_bark_button = document.getElementById("peter_bark_button");
-    const one_pager_button = document.getElementById("one_pager_button");
-
-    const everythings_shit_page = document.getElementById("everythings_shit_page");
-    const shanes_final_assignment_page = document.getElementById("shanes_final_assignment_page");
-    const pitt_student_survey_page = document.getElementById("pitt_student_survey_page");
-    const peter_bark_page = document.getElementById("peter_bark_page");
-    const one_pager_page = document.getElementById("one_pager_page");
-
     back_to_main_page_button.addEventListener(`click`, () => {
-        project_pages.style.display=`none`;
-        main_page.style.display=`flex`;
+        project_pages.style.display = `none`;
+        main_page.style.display = `flex`;
     });
 
+
+    function showPage(page) {
+        project_pages.style.display = `block`;
+        main_page.style.display = `none`;
+
+        const allPages = document.querySelectorAll(".project_page");
+        allPages.forEach(p => p.style.display = "none");
+
+        page.style.display = `block`;
+        back_to_main_page_button.style.display = `flex`;
+    }
+
+    // projects
+
+    const ace_button = document.getElementById("ace_button");
+    const ace_page = document.getElementById("ace_page");
+    ace_button.addEventListener(`click`, () => {
+        showPage(ace_page);
+    });
+
+    const baba_working_title_button = document.getElementById("baba_working_title_button");
+    const baba_working_title_page = document.getElementById("baba_working_title_page");
+    baba_working_title_button.addEventListener(`click`, () => {
+        showPage(baba_working_title_page);
+    });
+
+    const bathroom_action_button = document.getElementById("bathroom_action_button");
+    const bathroom_action_page = document.getElementById("bathroom_action_page");
+    bathroom_action_button.addEventListener(`click`, () => {
+        showPage(bathroom_action_page);
+    });
+
+
+    const burgled_button = document.getElementById("burgled_button");
+    const burgled_page = document.getElementById("burgled_page");
+    burgled_button.addEventListener(`click`, () => {
+        showPage(burgled_page);
+    });
+
+    const everythings_shit_button = document.getElementById("everythings_shit_button");
+    const everythings_shit_page = document.getElementById("everythings_shit_page");
     everythings_shit_button.addEventListener(`click`, () => {
         showPage(everythings_shit_page);
     });
 
-    shanes_final_assignment_button.addEventListener(`click`, () => {
-        showPage(shanes_final_assignment_page);
+    const first_talking_monkey_button = document.getElementById("first_talking_monkey_button");
+    const first_talking_monkey_page = document.getElementById("first_talking_monkey_page");
+    first_talking_monkey_button.addEventListener(`click`, () => {
+        showPage(first_talking_monkey_page);
     });
 
-    pitt_student_survey_button.addEventListener(`click`, () => {
-        showPage(pitt_student_survey_page);
+    const idegfilm_button = document.getElementById("idegfilm_button");
+    const idegfilm_page = document.getElementById("idegfilm_page");
+    idegfilm_button.addEventListener(`click`, () => {
+        showPage(idegfilm_page);
     });
 
+    const messy_button = document.getElementById("messy_button");
+    const messy_page = document.getElementById("messy_page");
+    messy_button.addEventListener(`click`, () => {
+        showPage(messy_page);
+    });
+
+    const missing_notebook_button = document.getElementById("missing_notebook_button");
+    const missing_notebook_page = document.getElementById("missing_notebook_page");
+    missing_notebook_button.addEventListener(`click`, () => {
+        showPage(missing_notebook_page);
+    });
+
+    const missing_person_button = document.getElementById("missing_person_button");
+    const missing_person_page = document.getElementById("missing_person_page");
+    missing_person_button.addEventListener(`click`, () => {
+        showPage(missing_person_page);
+    });
+
+    const panka_megint_maszatol_button = document.getElementById("panka_megint_maszatol_button");
+    const panka_megint_maszatol_page = document.getElementById("panka_megint_maszatol_page");
+    panka_megint_maszatol_button.addEventListener(`click`, () => {
+        showPage(panka_megint_maszatol_page);
+    });
+
+    const peter_bark_button = document.getElementById("peter_bark_button");
+    const peter_bark_page = document.getElementById("peter_bark_page");
     peter_bark_button.addEventListener(`click`, () => {
         showPage(peter_bark_page);
     });
 
-    one_pager_button.addEventListener(`click`, () => {
-        showPage(one_pager_page);
+    const pitt_student_survey_button = document.getElementById("pitt_student_survey_button");
+    const pitt_student_survey_page = document.getElementById("pitt_student_survey_page");
+    pitt_student_survey_button.addEventListener(`click`, () => {
+        showPage(pitt_student_survey_page);
     });
 
-    function showPage(page) {
-        project_pages.style.display=`block`;
-        main_page.style.display=`none`;
-        everythings_shit_page.style.display=`none`;
-        shanes_final_assignment_page.style.display=`none`;
-        pitt_student_survey_page.style.display=`none`;
-        peter_bark_page.style.display=`none`;
-        one_pager_page.style.display=`none`;
-        page.style.display=`block`;
-        back_to_main_page_button.style.display=`flex`;
-    }
+    const scared_beyond_development_button = document.getElementById("scared_beyond_development_button");
+    const scared_beyond_development_page = document.getElementById("scared_beyond_development_page");
+    scared_beyond_development_button.addEventListener(`click`, () => {
+        showPage(scared_beyond_development_page);
+    });
 
+    const shanes_final_assignment_button = document.getElementById("shanes_final_assignment_button");
+    const shanes_final_assignment_page = document.getElementById("shanes_final_assignment_page");
+    shanes_final_assignment_button.addEventListener(`click`, () => {
+        showPage(shanes_final_assignment_page);
+    });
+
+    const warhol_one_pager_button = document.getElementById("warhol_one_pager_button")
+    const warhol_one_pager_page = document.getElementById("warhol_one_pager_page");
+    warhol_one_pager_button.addEventListener(`click`, () => {
+        showPage(warhol_one_pager_page);
+    });
 </script>
 </html>
