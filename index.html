@@ -300,6 +300,7 @@
             <h3 id="pitt_student_survey_button">Pitt Student Survey (2019)</h3>
             <h3 id="scared_beyond_development_button">Scared Beyond Development (2019)</h3>
             <h3 id="shanes_final_assignment_button">Shane's Final Assignment (2019)</h3>
+            <h3 id="slate_button">slate (2025)</h3>
             <h3 id="warhol_one_pager_button">Warhol One Pager (2022)</h3>
         </div>        
     </div>
@@ -463,6 +464,14 @@
             <p class="project_link"><a href="https://www.youtube.com/watch?v=PlVek8UI-cE" target="_blank">https://www.youtube.com/watch?v=PlVek8UI-cE</a></p>
         </div>
 
+        <div id="slate_page" class="project_page">
+            <h4>slate (2025)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This is my actor slate.</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=7QoMTnodZ_I" target="_blank">https://www.youtube.com/watch?v=7QoMTnodZ_I</a></p>
+        </div>
+
         <div id="warhol_one_pager_page" class="project_page">
             <h4>Warhol One Pager (2022)</h4>
             <b class="description_text">Description</b>
@@ -598,6 +607,12 @@
     const shanes_final_assignment_page = document.getElementById("shanes_final_assignment_page");
     shanes_final_assignment_button.addEventListener(`click`, () => {
         showPage(shanes_final_assignment_page);
+    });
+
+    const slate_button = document.getElementById("slate_button");
+    const slate_page = document.getElementById("slate_page");
+    slate_button.addEventListener(`click`, () => {
+        showPage(slate_page);
     });
 
     const warhol_one_pager_button = document.getElementById("warhol_one_pager_button")
