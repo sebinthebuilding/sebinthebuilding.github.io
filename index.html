@@ -294,6 +294,7 @@
             <h3 id="gun_the_button">Gun, The (2025)</h3>
             <h3 id="idegfilm_button">Idegfilm (Frustration Film) (2025)</h3>
             <h3 id="messy_button">Messy! (2025)</h3>
+            <h3 id="misc_button">misc</h3>
             <h3 id="missing_notebook_button">Missing Notebook (2019)</h3>
             <h3 id="missing_person_button">Missing Person (2024)</h3>
             <h3 id="panka_megint_maszatol_button">Panka Megint Maszatol<br>(Panka's at It Again) (2025)</h3>
@@ -396,6 +397,17 @@
             <p class="roles">Writer, Director, Editor</p>
             <b class="link_text">Link</b>
             <p class="project_link"><a href="https://www.youtube.com/watch?v=_aZX4Jc1_Dk" target="_blank">https://www.youtube.com/watch?v=_aZX4Jc1_Dk</a></p>
+        </div>
+
+        <div id="misc_page" class="project_page">
+            <h4>misc</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This is page is where a put all the random stuff. The two videos in here currently are videos I made for a job application a couple years back. They're both a short entertaining watch.</p>
+            <b class="roles_text">Roles</b> 
+            <p class="roles">Writer, Director, Editor, Actor</p>
+            <b class="link_text">Links</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=UzxE6PthicQ" target="_blank">https://www.youtube.com/watch?v=UzxE6PthicQ</a></p>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=PDktO2upZuE" target="_blank">https://www.youtube.com/watch?v=PDktO2upZuE</a></p>
         </div>
 
         <div id="missing_notebook_page" class="project_page">
@@ -590,6 +602,12 @@
     const messy_page = document.getElementById("messy_page");
     messy_button.addEventListener(`click`, () => {
         showPage(messy_page);
+    });
+
+    const misc_button = document.getElementById("misc_button");
+    const misc_page = document.getElementById("misc_page");
+    misc_button.addEventListener(`click`, () => {
+        showPage(misc_page);
     });
 
     const missing_notebook_button = document.getElementById("missing_notebook_button");
