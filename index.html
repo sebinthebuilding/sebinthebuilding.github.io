@@ -286,7 +286,6 @@
         <h2 id="my_portfolio_title">My Portfolio</h2>
         <div id="portfolio_content">
             <h3 id="ace_button">ACE (2021)</h3>
-            <h3 id="baba_working_title_button">baba (baby) (2025) [working title]</h3>
             <h3 id="bathroom_action_button">Bathroom Action (2024)</h3>
             <h3 id="burgled_button">Burgled (2024)</h3>
             <h3 id="everythings_shit_button">Everything's Shit (2022)</h3>
@@ -303,6 +302,7 @@
             <h3 id="scared_beyond_development_button">Scared Beyond Development (2019)</h3>
             <h3 id="shanes_final_assignment_button">Shane's Final Assignment (2019)</h3>
             <!--<h3 id="slate_button">slate (2025)</h3>--> 
+            <h3 id="veszteség_button">Veszteség (Loss) (2025)</h3>
             <h3 id="warhol_one_pager_button">Warhol One Pager (2022)</h3>
         </div>        
     </div>
@@ -317,16 +317,6 @@
             <p class="roles">Editor</p>
             <b class="link_text">Link</b>
             <p class="project_link"><a href="https://www.youtube.com/watch?v=sYNPpiyX_yg" target="_blank">https://www.youtube.com/watch?v=sYNPpiyX_yg</a></p>
-        </div>
-
-        <div id="baba_working_title_page" class="project_page">
-            <h4>baba (baby) (2025) [working title] - Picture Lock</h4>
-            <b class="description_text">Description</b>
-            <p class="project_description">This was an idea my writer colleague at The Lumiere Film School had. She asked if I could help her direct it. For me, this was very valuable practice in multiple aspects of directing. First, I had to create the shotlist on the spot, as I had not seen the location beforehand. And second, this was an incredible lesson in directing an actor. She gave an unbelievable performance.</p>
-            <b class="roles_text">Roles</b>
-            <p class="roles">Director, Editor</p>
-            <b class="link_text">Link</b>
-            <p class="project_link"><a href="https://www.youtube.com/watch?v=XeRC7YDWWnA" target="_blank">https://www.youtube.com/watch?v=XeRC7YDWWnA</a></p>
         </div>
 
         <div id="bathroom_action_page" class="project_page">
@@ -504,6 +494,16 @@
         </div>
         -->
 
+        <div id="veszteség_page" class="project_page">
+            <h4>Veszteség (Loss) (2025)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">This was an idea my writer colleague at The Lumiere Film School had. She asked if I could help her direct it. For me, this was very valuable practice in multiple aspects of directing. First, I had to create the shotlist on the spot, as I had not seen the location beforehand. And second, this was an incredible lesson in directing an actor. She gave an unbelievable performance.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Director, Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=XJ7FL-DaH7c" target="_blank">https://www.youtube.com/watch?v=XJ7FL-DaH7c</a></p>
+        </div>
+
         <div id="warhol_one_pager_page" class="project_page">
             <h4>Warhol One Pager (2022)</h4>
             <b class="description_text">Description</b>
@@ -554,12 +554,6 @@
     const ace_page = document.getElementById("ace_page");
     ace_button.addEventListener(`click`, () => {
         showPage(ace_page);
-    });
-
-    const baba_working_title_button = document.getElementById("baba_working_title_button");
-    const baba_working_title_page = document.getElementById("baba_working_title_page");
-    baba_working_title_button.addEventListener(`click`, () => {
-        showPage(baba_working_title_page);
     });
 
     const bathroom_action_button = document.getElementById("bathroom_action_button");
@@ -659,6 +653,13 @@
         showPage(slate_page);
     });
     */
+
+    const veszteség_button = document.getElementById("veszteség_button");
+    const veszteség_page = document.getElementById("veszteség_page");
+    veszteség_button.addEventListener(`click`, () => {
+        showPage(veszteség_page);
+    });
+
 
     const warhol_one_pager_button = document.getElementById("warhol_one_pager_button")
     const warhol_one_pager_page = document.getElementById("warhol_one_pager_page");
