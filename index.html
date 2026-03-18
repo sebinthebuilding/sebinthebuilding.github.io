@@ -310,6 +310,7 @@
             <h3 id="missing_notebook_button">Missing Notebook (2019)</h3>
             <h3 id="missing_person_button">Missing Person (2024)</h3>
             <h3 id="monster_the_button">Monster, The (2025)</h3>
+            <h3 id="monster_the_button">My Younger Brother (Az öcsém w/ Eng subs) (2026)</h3>
             <h3 id="nothing_else_button">Nothing Else (2025)</h3>
             <h3 id="panka_megint_maszatol_button">Panka Megint Maszatol<br>(Panka's at It Again) (2025)</h3>
             <h3 id="peter_bark_button">Peter Bark (2019)</h3>
@@ -538,6 +539,17 @@
             <b class="link_text">Link</b>
             <p class="project_link"><a href="https://www.youtube.com/watch?v=C6mGrHFtK3c"
                     target="_blank">https://www.youtube.com/watch?v=C6mGrHFtK3c</a></p>
+        </div>
+
+        <div id="my_younger_brother_page" class="project_page">
+            <h4>My Younger Brother (Az öcsém w/ Eng subs)</h4>
+            <b class="description_text">Description</b>
+            <p class="project_description">An in-depth character study on my younger brother.</p>
+            <b class="roles_text">Roles</b>
+            <p class="roles">Writer, Director & Editor</p>
+            <b class="link_text">Link</b>
+            <p class="project_link"><a href="https://www.youtube.com/watch?v=XQkyf5s3dII"
+                    target="_blank">https://www.youtube.com/watch?v=XQkyf5s3dII</a></p>
         </div>
 
         <div id="nothing_else_page" class="project_page">
@@ -805,6 +817,12 @@
     const monster_the_page = document.getElementById("monster_the_page");
     monster_the_button.addEventListener(`click`, () => {
         showPage(monster_the_page);
+    });
+
+    const my_younger_brother_button = document.getElementById("my_younger_brother_button");
+    const my_younger_brother_page = document.getElementById("my_younger_brother_page");
+    my_younger_brother_button.addEventListener(`click`, () => {
+        showPage(my_younger_brother);
     });
 
     const nothing_else_button = document.getElementById("nothing_else_button");
